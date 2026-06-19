@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+    <!-- Hero Section -->
+    <section class="py-stack-xl flex flex-col md:flex-row items-center gap-stack-lg">
+        <div class="md:w-3/5 space-y-4">
+            <h1 class="font-display text-display text-primary leading-tight">
+                Tutoriels &amp; Guides
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Apprenez les dernières technologies avec nos guides étape par étape. De la programmation Web au Cloud
+                Computing, développez vos compétences avec des experts.
+            </p>
+        </div>
+        <div class="hidden md:block md:w-2/5">
+            <div class="bg-primary-container/20 rounded-xl p-8 flex items-center justify-center">
+                <span class="material-symbols-outlined text-[120px] text-primary/40" data-icon="school"
+                    style="font-variation-settings: 'FILL' 1;">school</span>
+            </div>
+        </div>
+    </section>
+    <!-- Filters Section -->
+    <div
+        class="mb-stack-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md border-b border-outline-variant pb-8">
+        <div class="flex flex-wrap gap-2">
+            <a href="{% url 'articles' %}" class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-label-md transition-all">
+                Tous
+            </a>
+            {% for category in categories %}
+            <a href="{% url 'articles' %}?category={{ category.id }}" class="px-6 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md transition-all">
+                {{ category.name }}
+            </a>
+            {% endfor %}
+        </div>
+        <div class="flex items-center gap-2 text-on-surface-variant">
+            <span class="font-label-md">Trier par:</span>
+            <select class="bg-transparent border-none focus:ring-0 font-label-md text-primary cursor-pointer">
+                <option>Plus récents</option>
+                <option>Populaires</option>
+                <option>Temps de lecture</option>
+            </select>
+        </div>
+    </div>
+    <!-- Tutorials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-stack-xl">
+        {% for article in articles %}
+        <article class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow flex flex-col h-full">
+            <div class="relative h-48 w-full">
+                <div class="absolute inset-0 bg-cover bg-center"
+                    data-alt="A clean, minimalist high-key photograph of a modern developer workspace with a laptop displaying elegant code, surrounded by soft lighting and a blue-toned color palette. The aesthetic is professional, airy, and educational, emphasizing clarity and digital focus."
+                    style="background-image: url('{{ article.image.url }}');">
+                </div>
+                <div class="absolute top-4 left-4">
+                    <span
+                        class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-lg text-[12px] font-bold uppercase tracking-wider">
+                        {{ article.category.name }}
+                    </span>
+                </div>
+            </div>
+            <div class="p-6 flex-grow flex flex-col">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="material-symbols-outlined text-[18px] text-primary"
+                        data-icon="schedule">schedule</span>
+                    <span class="text-on-surface-variant text-[14px]">{{ article.time_to_read }} min lecture</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-3 line-clamp-2">
+                    {{ article.title }}
+                </h3>
+                <p class="text-on-surface-variant text-body-md line-clamp-3 mb-6">
+                    {{ article.content|truncatechars:50 }}...
+                </p>
+                <div class="mt-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="font-label-md text-on-surface text-[12px]">
+                            {{ article.author }}
+                        </span>
+                    </div>
+                    <a class="text-primary font-bold hover:underline flex items-center gap-1" href="{% url 'article_detail' article.id %}">
+                        Lire 
+                        <span class="material-symbols-outlined text-[16px]"
+                            data-icon="arrow_forward">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    <!-- Pagination or Load More -->
+    <div class="flex justify-center mb-stack-xl">
+        <button
+            class="px-8 py-4 border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary hover:text-on-primary transition-all flex items-center gap-2">
+            Voir plus de tutoriels
+            <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+        </button>
+    </div>
+    <!-- Newsletter Section (Bento Style) -->
+    <section class="bg-surface-container rounded-3xl p-stack-lg mb-stack-xl overflow-hidden relative">
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-stack-lg">
+            <div class="max-w-md">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Restez à jour</h2>
+                <p class="text-on-surface-variant text-body-md">Recevez chaque semaine un tutoriel exclusif et les
+                    dernières nouvelles tech directement dans votre boîte mail.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <input
+                    class="px-6 py-4 rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none w-full sm:w-80 transition-all"
+                    placeholder="votre@email.com" type="email" />
+                <button
+                    class="px-8 py-4 bg-primary text-on-primary font-bold rounded-xl hover:opacity-90 transition-opacity">S'abonner</button>
+            </div>
+        </div>
+        <div class="absolute -right-20 -bottom-20 opacity-10 pointer-events-none">
+            <span class="material-symbols-outlined text-[240px] text-primary" data-icon="mail">mail</span>
+        </div>
+    </section>
+</main>
+{% endblock %}

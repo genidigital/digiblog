@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <!-- Hero Split Section -->
+    <section
+        class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl flex flex-col md:flex-row items-center gap-gutter">
+        <div class="w-full md:w-1/2 space-y-stack-md">
+            <h1 class="font-display text-display text-on-surface">À propos de <span class="text-primary">DigiBlog</span>
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                Nous croyons que la technologie ne devrait pas être un langage réservé aux initiés. Notre mission est de
+                simplifier le paysage numérique complexe pour le rendre accessible à tous, des développeurs chevronnés
+                aux curieux du digital.
+            </p>
+            <div class="pt-stack-md">
+                <button
+                    class="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-md hover:opacity-90 transition-all shadow-md">Découvrir
+                    notre vision</button>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2">
+            <div class="aspect-video rounded-xl overflow-hidden ambient-shadow relative">
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
+                <img class="w-full h-full object-cover"
+                    data-alt="A clean, minimalist workspace with a high-end laptop, a cup of coffee, and a notebook on a white desk. The lighting is bright and airy, reflecting a professional yet approachable tech blog atmosphere. The color palette features soft blues and crisp whites, conveying a sense of digital clarity and focus."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_uKFdR8QU-vOyPe79P6ZxZehrDr5yBQ7LGk103rrJppF4hO-cwasdndZZBiPIXIPUdF_Dnpz6II8OxWcF4YnFFd4bLLDAzPRGMPJaCiosFDvPcoxXJLjtmj9sENOgIqnMxgV10pgaAWyEktgOh_jqAOR7oUPLU8IbLkYaZNbrAYZcQpR6HQqqYkN5n1K5ZIDmDtogdtX2O0_v_hkinmfrjB9hjcrDmbdLwhG_W1TuKayC02u3SiP3mY2NVT9rUIpBAPXcNZmAhQ" />
+            </div>
+        </div>
+    </section>
+    <!-- Centered Narrative Section -->
+    <section class="bg-surface-container-low py-stack-xl">
+        <div class="max-w-[720px] mx-auto px-margin-mobile text-center space-y-stack-md">
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Simplifier, toujours.</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant leading-loose">
+                DigiBlog est né d'une frustration : l'abondance d'informations techniques inutilement compliquées. Nous
+                avons décidé de créer une "source pure" d'insights numériques. Chaque article, chaque tutoriel et chaque
+                actualité est passé au crible de la clarté. Nous ne nous contentons pas de rapporter l'information ;
+                nous l'analysons, la déconstruisons et la reconstruisons pour vous offrir l'essentiel.
+            </p>
+        </div>
+    </section>
+    <!-- Meet the Team -->
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl">
+        <div class="text-center mb-stack-lg">
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Rencontrez l'Équipe</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">Les voix derrière la précision technique.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+            <!-- Team Member 1 -->
+            <div
+                class="bg-surface-container-lowest p-stack-lg rounded-xl ambient-shadow hover-lift transition-all text-center">
+                <div
+                    class="w-24 h-24 rounded-full mx-auto mb-stack-md overflow-hidden ring-4 ring-primary-container/20">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A professional headshot of a friendly-looking editor in their 30s with glasses, smiling warmly. The background is a soft, blurred office interior with modern lighting. The aesthetic is clean and trustworthy, using natural skin tones and a soft focus for a premium feel."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAywHXExuilvWvaASCXeLMXGwpt0zumF6NCnnftWci_rvPsMxrvJ2UEHfZGOJ9-6uSs-CELNy8s0hHTtxCuIqgkpMjtUSygRyJPeZ4BACeATMSAI6tP6-Ru5D7J-qGbEi9Uue0YdUMP6t-Mc38Jat0Ik34cSWS3yr9wxJ1yYySckO0udsv3Hf0uQ33Lnq2hoNdUkKXI4zhHJ6CMTd0QqqxfKQsVShHiaxpIrbi4shzuBYZPP0DjYc4psxwkD1Vw9NhYyaeVX-n1fA" />
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Thomas Leroy</h3>
+                <p class="text-primary font-label-md mb-2">Rédacteur en Chef</p>
+                <p class="font-body-md text-body-md text-on-surface-variant">Passionné par l'architecture logicielle et
+                    la vulgarisation complexe.</p>
+            </div>
+            <!-- Team Member 2 -->
+            <div
+                class="bg-surface-container-lowest p-stack-lg rounded-xl ambient-shadow hover-lift transition-all text-center">
+                <div
+                    class="w-24 h-24 rounded-full mx-auto mb-stack-md overflow-hidden ring-4 ring-primary-container/20">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A professional portrait of a tech-savvy female editor with a bright, energetic expression. She is set against a minimalist architectural background with clean lines and soft daylight. The image conveys authority and approachability in a modern digital media context."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4JHYfmmjmD4l_V3LYCy0s6YqAh3JczsBLP63lcyVBMLIF_p4FKbWbL4lohb5yh37r_MT562M5f--tNVBivkNIC_sM_YnmFgI1POQiGmPdMmB3u9OiHf7i_h8IvwGRnoedBirfEqwbCG22XlaVAy4Jnp-Kjr1ZJV0uUQcKRJ9oDWCZfuhZWH4MW8lomy3Yrb2Q6LkiOIzu7hqUP6dShaptanM-FBKiDmLTpnS5fj2_RQCAQqhlg9EkuOp2xwOnUjx_drpFhX4DAA" />
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Sarah Benali</h3>
+                <p class="text-primary font-label-md mb-2">Lead Tech Tutoriels</p>
+                <p class="font-body-md text-body-md text-on-surface-variant">Experte en développement Front-end et
+                    passionnée par l'UX minimaliste.</p>
+            </div>
+            <!-- Team Member 3 -->
+            <div
+                class="bg-surface-container-lowest p-stack-lg rounded-xl ambient-shadow hover-lift transition-all text-center">
+                <div
+                    class="w-24 h-24 rounded-full mx-auto mb-stack-md overflow-hidden ring-4 ring-primary-container/20">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A sophisticated headshot of a senior tech journalist with a thoughtful, analytical expression. The lighting is soft and cinematic, with a high-key background that feels modern and premium. The color palette is dominated by professional greys and subtle blue accents."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYvsOMy1RC_Mp7brNZTn94tCkxAq1mq8xjcThLxRkXGX5P85VA0tSsE0c-Rpsb28IbfZS9lfwVYs761KdsrsZhn1OYLrf5jUPqiM7Mx8QWEcULB2VxHW-7IFfGI6l2WRwbN5ON-qeCwhZcy39S9AnfzqJugMPjiYvuUiqxETqZ-5bsVACxeTpjinZDwDoR2EV8x3I-PogNGtn0gmWYbFPn4GqJX7h4GwE70_J4z9goSUCPcVacAp4Mu5iCAH6FgRvDyoAuWE_ArQ" />
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Marc Dupont</h3>
+                <p class="text-primary font-label-md mb-2">Analyste Actualités</p>
+                <p class="font-body-md text-body-md text-on-surface-variant">Décrypte les tendances IA et cybersécurité
+                    pour les professionnels.</p>
+            </div>
+        </div>
+    </section>
+    
+</main>
+{% endblock %}

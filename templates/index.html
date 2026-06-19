@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-stack-lg">
+        <!-- Hero Section: Featured Article -->
+        <section class="mb-stack-xl">
+            <div class="relative w-full aspect-[21/9] rounded-xl overflow-hidden ambient-shadow group cursor-pointer">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    data-alt="A breathtaking view from a minimalist modern workspace overlooking a serene mountain lake at sunrise. A high-end laptop sits on a sleek oak desk with a cup of coffee. The lighting is crisp and natural, emphasizing a professional yet liberated digital nomad lifestyle. The color palette is composed of soft blues, warm wood tones, and clean whites, creating a sophisticated and aspirational atmosphere."
+                    style="background-image: url('{{ article_aleatoire.image.url }}')">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent">
+                </div>
+                <div class="absolute bottom-0 left-0 p-stack-lg md:p-stack-xl w-full md:w-3/4">
+                    <span class="inline-block px-3 py-1 mb-4 bg-primary text-white font-label-md text-label-md rounded-lg uppercase tracking-wider">
+                        À la une
+                    </span>
+                    <h1 class="font-display text-headline-lg-mobile md:text-display text-white mb-4 leading-tight">
+                        {{ article_aleatoire.title }}
+                    </h1>
+                    <p class="text-white/90 font-body-lg text-body-lg mb-6 line-clamp-2 max-w-2xl">
+                        {{ article_aleatoire.content|truncatechars:60 }}...
+                    </p>
+                    <a class="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-full font-label-md text-label-md hover:bg-primary-container hover:text-white transition-all"
+                        href="{% url 'article_detail' article_aleatoire.id %}">
+                        Lire l'article 
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Layout Split: Grid + Sidebar -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+            <!-- Main Content Area (8 Columns) -->
+            <div class="lg:col-span-8 space-y-stack-xl">
+                <div class="flex items-center justify-between mb-stack-md border-b border-outline-variant pb-4">
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface">Dernières Publications</h2>
+                    <div class="flex gap-2">
+                        <button
+                            class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">grid_view</span>
+                        </button>
+                        <button
+                            class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">list</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Articles Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                    <!-- Article 1 -->
+                    {% for article in articles %}
+                    <article
+                        class="bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow flex flex-col group">
+                        <div class="aspect-video overflow-hidden">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                data-alt="A futuristic laboratory setting with holographic neural networks floating in the air. Soft blue and teal light illuminates the workspace. The image is clean and minimalist, showing high-tech servers in the blurred background. The style is sharp, professional, and represents cutting-edge artificial intelligence research."
+                                src="{{ article.image.url }}" />
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="text-primary font-label-md text-label-md mb-2">
+                                {{ article.category.name }}
+                            </span>
+                            <h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">
+                                {{ article.title }}
+                            </h3>
+                            <p class="text-on-surface-variant font-body-md text-body-md mb-4 flex-grow">
+                                {{ article.content|truncatechars:50 }}...
+                            </p>
+                            <div class="flex items-center gap-3 mt-auto pt-4 border-t border-outline-variant/30">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-xs">
+                                    JD</div>
+                                <span class="text-outline text-label-md font-label-md">
+                                    {{ article.author }} • {{ article.time_to_read }} min de lecture
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                    {% empty %}
+                    <p>Aucun article a lire</p>
+                    {% endfor %}
+                    
+                </div>
+                <div class="flex justify-center pt-stack-lg">
+                    <a href="{% url 'articles' %}" class="px-8 py-3 rounded-full border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-white transition-all">
+                        Afficher plus d'articles
+                    </a>
+                </div>
+            </div>
+            <!-- Sidebar (4 Columns) -->
+            <aside class="lg:col-span-4 space-y-stack-lg">
+                <!-- Newsletter Box -->
+                <div class="bg-primary p-stack-lg rounded-xl text-white ambient-shadow">
+                    <h4 class="font-headline-md text-headline-md mb-4">Restez à l'affût</h4>
+                    <p class="font-body-md text-body-md mb-6 opacity-90">Recevez nos meilleures analyses technologiques
+                        directement dans votre boîte mail chaque lundi.</p>
+                    <form class="space-y-4">
+                        <input
+                            class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
+                            placeholder="Votre email" type="email" />
+                        <button
+                            class="w-full bg-white text-primary font-label-md text-label-md py-3 rounded-lg hover:bg-surface-container transition-colors">S'abonner</button>
+                    </form>
+                    <p class="text-[12px] mt-4 opacity-70 text-center italic">Pas de spam. Désabonnement possible en un
+                        clic.</p>
+                </div>
+                <!-- Popular Articles -->
+                <div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant/30">
+                    <h4 class="font-headline-md text-headline-md text-on-surface mb-6">Articles Populaires</h4>
+                    <div class="space-y-6">
+                        <a class="flex gap-4 group" href="#">
+                            <div
+                                class="text-primary font-display text-headline-md opacity-20 group-hover:opacity-100 transition-opacity">
+                                01</div>
+                            <div>
+                                <h5
+                                    class="font-headline-md !text-[16px] text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                                    Comment sécuriser vos applications Node.js en 2024</h5>
+                                <p class="text-outline text-label-md mt-1">2.4k vues</p>
+                            </div>
+                        </a>
+                        <a class="flex gap-4 group" href="#">
+                            <div
+                                class="text-primary font-display text-headline-md opacity-20 group-hover:opacity-100 transition-opacity">
+                                02</div>
+                            <div>
+                                <h5
+                                    class="font-headline-md !text-[16px] text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                                    L'ascension de Rust dans le monde de l'entreprise</h5>
+                                <p class="text-outline text-label-md mt-1">1.9k vues</p>
+                            </div>
+                        </a>
+                        <a class="flex gap-4 group" href="#">
+                            <div
+                                class="text-primary font-display text-headline-md opacity-20 group-hover:opacity-100 transition-opacity">
+                                03</div>
+                            <div>
+                                <h5
+                                    class="font-headline-md !text-[16px] text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                                    Guide ultime de l'accessibilité web moderne</h5>
+                                <p class="text-outline text-label-md mt-1">1.5k vues</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Categories Cloud -->
+                <div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant/30">
+                    <h4 class="font-headline-md text-headline-md text-on-surface mb-4">Parcourir</h4>
+                    <div class="flex flex-wrap gap-2">
+                        {% for category in categories %}
+                        <a class="px-4 py-2 bg-surface-container hover:bg-primary-fixed text-on-surface-variant font-label-md text-label-md rounded-full transition-colors"
+                            href="{% url 'articles' %}?category={{ category.id }}">
+                            {{ category.name }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+{% endblock %}

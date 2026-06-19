@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="pt-stack-xl pb-stack-xl px-margin-mobile">
+    <article class="max-w-[720px] mx-auto mt-stack-lg">
+        <!-- Article Hero -->
+        <header class="mb-stack-lg text-center md:text-left">
+            <div class="flex flex-wrap items-center gap-2 mb-4 justify-center md:justify-start">
+                <span class="bg-primary-container/20 text-primary px-3 py-1 rounded-lg text-label-md font-label-md">
+                    {{ article.category.name }}
+                </span>
+                <span class="text-on-surface-variant text-label-md font-label-md">5 min de lecture</span>
+            </div>
+            <h1 class="font-display text-headline-lg-mobile md:text-display text-on-surface mb-6 leading-tight">
+                {{ article.title }}
+            </h1>
+            <div class="rounded-xl overflow-hidden shadow-sm aspect-video">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A wide, cinematic shot of a clean, minimalist developer workspace at night. A large ultra-wide monitor displays complex, colorful lines of code within a modern IDE. A mechanical keyboard with subtle blue backlighting sits on a felt desk mat. The lighting is moody and focused, with soft digital blue accents illuminating the room, creating an atmosphere of deep focus and technological sophistication."
+                        src="{{ article.image.url }}" />
+                </div>
+            <div class="flex items-center gap-4 justify-center md:justify-start">
+                <div class="text-left">
+                    <p class="font-bold text-on-surface">{{ article.author }}</p>
+                    <p class="text-on-surface-variant text-sm">Publié le {{ article.created_at }}</p>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content -->
+        <div class="prose prose-slate max-w-none text-on-surface">
+            <p class="text-body-lg font-body-lg mb-8 leading-relaxed opacity-90">
+                {{ article.content|linebreaks }}
+            </p>
+        </div>
+        <!-- Share Buttons & Footer of Article -->
+        <footer class="border-t border-outline-variant pt-stack-md mt-stack-xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <span class="font-bold text-on-surface">Partager cet article :</span>
+                    <div class="flex gap-2">
+                        <button
+                            class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all duration-300">
+                            <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                </path>
+                            </svg>
+                        </button>
+                        <button
+                            class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all duration-300">
+                            <svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3V10.2h-2.8v8.3h2.8v-4.79c0-.57.6-.57.6-.57.24 0 .51.1.51.57v4.79h2.8M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.3H5.5v8.3h2.77z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg border border-outline text-on-surface hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined text-sm">bookmark</span>
+                        Sauvegarder
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </article>
+    <!-- Related Articles -->
+    <section class="max-w-container-max mx-auto mt-stack-xl pt-stack-xl border-t border-outline-variant">
+        <h3 class="font-headline-lg text-headline-lg mb-stack-md px-margin-mobile md:px-0">Articles Similaires</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <!-- Related Card 1 -->
+             {% for sarticle in articles_similaires %}
+            <a class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+                href="{% url 'article_detail' sarticle.id %}">
+                <div class="h-48 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        data-alt="Close-up of a high-end laptop showing abstract colorful data visualizations. The background is a blurred tech conference with soft lighting. Professional photography style, bright and clean composition with a focus on depth of field. Dominant colors are soft blues and emerald greens."
+                        src="{{ sarticle.image.url }}" />
+                </div>
+                <div class="p-stack-md">
+                    <span class="text-primary text-label-md font-label-md mb-2 block">{{ sarticle.category.name }}</span>
+                    <h4 class="font-headline-md text-headline-md mb-2 group-hover:text-primary transition-colors">
+                        {{ sarticle.title }}
+                    </h4>
+                    <p class="text-on-surface-variant line-clamp-2">
+                        {{ sarticle.content|truncatechars:50 }}...
+                    </p>
+                </div>
+            </a>
+            {% empty %}
+                <p>Aucun article similaire trouvé.</p>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

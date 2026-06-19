@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DigiBlog | Insights Technologiques</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#00714d",
+                        "secondary-fixed": "#6ffbbe",
+                        "background": "#f9f9ff",
+                        "inverse-surface": "#263143",
+                        "on-tertiary-fixed": "#311400",
+                        "on-primary-fixed": "#001a42",
+                        "tertiary": "#924700",
+                        "outline": "#727785",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "inverse-primary": "#adc6ff",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c2c6d6",
+                        "surface-container-low": "#f0f3ff",
+                        "surface": "#f9f9ff",
+                        "surface-container": "#e7eeff",
+                        "on-surface-variant": "#424754",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface": "#111c2d",
+                        "surface-tint": "#005ac2",
+                        "surface-bright": "#f9f9ff",
+                        "surface-dim": "#cfdaf2",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fefcff",
+                        "tertiary-container": "#b75b00",
+                        "error": "#ba1a1a",
+                        "secondary": "#006c49",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary": "#0058be",
+                        "on-secondary-fixed-variant": "#005236",
+                        "secondary-container": "#6cf8bb",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "surface-variant": "#d8e3fb",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-fixed": "#d8e2ff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-container-high": "#dee8ff",
+                        "on-background": "#111c2d",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2170e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "48px",
+                        "stack-xl": "64px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #f9f9ff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .ambient-shadow {
+            box-shadow: 0 4px 20px rgba(30, 41, 59, 0.05);
+        }
+
+        .ambient-shadow:hover {
+            box-shadow: 0 10px 30px rgba(30, 41, 59, 0.1);
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="text-on-background">
+    <!-- TopNavBar -->
+    <nav
+        class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md sticky top-0 z-50 shadow-sm transition-all duration-300 ease-in-out">
+        <div
+            class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+            <div
+                class="font-display text-display text-primary dark:text-inverse-primary tracking-tight !text-headline-md">
+                DigiBlog
+            </div>
+            <div class="hidden md:flex items-center gap-stack-lg">
+                <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md"
+                    href="{% url 'index' %}">Accueil</a>
+                <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md"
+                    href="{% url 'articles' %}">Articles</a>
+                <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md"
+                    href="{% url 'contact' %}">Contact</a>
+                <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md"
+                    href="{% url 'about' %}">À propos</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="hover:opacity-80 transition-opacity text-primary">
+                    <span class="material-symbols-outlined" data-icon="search">search</span>
+                </button>
+                <button class="md:hidden text-primary">
+                    <span class="material-symbols-outlined" data-icon="menu">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+    <!-- Footer -->
+    <footer
+        class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-stack-xl">
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-stack-xl max-w-container-max mx-auto">
+            <div class="md:col-span-1">
+                <div class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary mb-4">
+                    DigiBlog</div>
+                <p class="text-on-surface-variant dark:text-outline-variant font-body-md text-body-md">
+                    Simplifier la technologie pour tous. Votre dose quotidienne d'innovation et de tutoriels.
+                </p>
+            </div>
+            <div>
+                <h6 class="font-headline-md !text-[18px] text-on-surface dark:text-inverse-on-surface mb-4">Navigation
+                </h6>
+                <ul class="space-y-2">
+                    <li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md"
+                            href="#">Articles</a></li>
+                    <li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md"
+                            href="#">Tutoriels</a></li>
+                    <li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md"
+                            href="#">Actualités</a></li>
+                    <li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md"
+                            href="#">À propos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-headline-md !text-[18px] text-on-surface dark:text-inverse-on-surface mb-4">Légal</h6>
+                <ul class="space-y-2">
+                    <li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md"
+                            href="#">Confidentialité</a></li>
+                    <li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md"
+                            href="#">Contact</a></li>
+                    <li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md"
+                            href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-headline-md !text-[18px] text-on-surface dark:text-inverse-on-surface mb-4">Suivez-nous
+                </h6>
+                <div class="flex gap-4">
+                    <a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span
+                            class="material-symbols-outlined">public</span></a>
+                    <a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span
+                            class="material-symbols-outlined">rss_feed</span></a>
+                    <a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span
+                            class="material-symbols-outlined">chat_bubble</span></a>
+                </div>
+            </div>
+        </div>
+        <div
+            class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 border-t border-outline-variant/30 text-center">
+            <p class="text-outline font-label-md text-label-md">© 2024 DigiBlog. Simplifying technology for everyone.
+            </p>
+        </div>
+    </footer>
+    <script>
+        // Micro-interaction for smooth scrolling and hover effect management
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple Sticky Header Shadow Transition
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+
+</html>
